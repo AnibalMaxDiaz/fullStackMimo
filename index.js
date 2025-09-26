@@ -1,24 +1,9 @@
-const arr = [1, 2, 3, 4, 5];
-
-function procesarElemento(elemento, callback) {
-  setTimeout(() => {
-    const resultado = elemento * 2; // Simula un procesamiento
-    callback(resultado);
-  }, 1000);
-} 
-function procesarArray(array, callback) {
-  const resultados = [];
-  let elementosProcesados = 0;
-  array.forEach((elemento, index) => {
-    procesarElemento(elemento, (resultado) => {
-      resultados[index] = resultado;  
-      elementosProcesados++;
-      if (elementosProcesados === array.length) {
-        callback(resultados);
-      } 
-    });
-  });
+const array = [1, 2, 3, 4, 5];
+function doubleNumber(num){
+    return num * 2;
 }
-procesarArray(arr, (resultados) => {
-  console.log('Array procesado:', resultados);
-});
+function processArray(arr, callback){
+    const result = arr.map(callback);
+    console.log('Processed array:', result);
+}
+processArray(array, doubleNumber);
